@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "baseUrl": "./src",
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["dom", "esnext"],
+    "jsx": "react",
+    "declaration": true,
+    "strict": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "types": [
+      "@anansi/webpack-config/types",
+      "react-dom/experimental",
+      "react/experimental"
+    ],
+    "noEmit": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "**/*.test.ts*"]
+}

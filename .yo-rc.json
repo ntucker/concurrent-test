@@ -1,0 +1,22 @@
+{
+  "@anansi/generator-js": {
+    "promptValues": {
+      "projectType": "SPA",
+      "githubOrg": "ntucker",
+      "features": [],
+      "reactMode": "concurrent",
+      "style": "sass"
+    },
+    "githubOrg": "ntucker",
+    "rootPath": "src",
+    "assetPath": "dist",
+    "appName": "concurrent-test",
+    "githubDomain": "github.com",
+    "testing": false,
+    "features": [],
+    "badges": "",
+    "webpack": true,
+    "reactMode": "concurrent",
+    "style": "sass"
+  }
+}
