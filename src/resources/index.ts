@@ -10,6 +10,10 @@ export class PostResource extends Resource {
     return this.id?.toString();
   }
 
+  static getEndpointExtra() {
+    return { dataExpiryLength: 10000 };
+  }
+
   static urlRoot = 'https://jsonplaceholder.typicode.com/posts/';
 }
 export class CommentResource extends Resource {

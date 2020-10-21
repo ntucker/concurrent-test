@@ -10,12 +10,12 @@ import { PostResource, UserResource } from 'resources';
 
 import CommentList from './CommentList';
 
-export type Props = Pick<RouteChildrenProps<{ id: string }>, 'match'>;
+export type Props = { match: { id: string } };
 
 export default function PostDetail({ match }: Props) {
-  let id = 1;
-  if (match && match.params && match.params.id) {
-    id = Number.parseInt(match.params.id);
+  let id = 0;
+  if (match && match.id) {
+    id = Number.parseInt(match.id);
   }
   const post = useResource(PostResource.detail(), { id });
   const author = useResource(

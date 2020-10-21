@@ -28,7 +28,7 @@ export default function TransitionProvider({
     const match = allMatches(window.location.pathname)[0];
     if (match) {
       if (match.component) match.component?.preload();
-      if (match.resolveData) match.resolveData(routeContext);
+      if (match.resolveData) match.resolveData(routeContext, match);
     }
 
     // transition begins

@@ -11,7 +11,6 @@ import useRouteContext from './useRouteContext';
 function RoutesProvider({ children }: { children: React.ReactChild }) {
   const currentPath = useBrowserPathname();
   const routeContext = useRouteContext();
-
   return (
     <PojoRouter
       namedPaths={namedPaths}
