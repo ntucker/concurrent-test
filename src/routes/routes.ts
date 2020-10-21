@@ -1,4 +1,4 @@
-import lazyPage from 'components/lazyPage';
+import lazyPage from 'routes/lib/lazyPage';
 import { PostResource, UserResource } from 'resources';
 
 import useRouteContext from './useRouteContext';

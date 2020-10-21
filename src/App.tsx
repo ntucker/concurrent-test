@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import { Layout } from 'antd';
 
 import NetworkBoundary from 'components/NetworkBoundary';
-import MatchedRoute from 'routes/MatchedRoute';
+import MatchedRoute from 'routes/lib/MatchedRoute';
 import Nav from 'navigation/Nav';
 
 const App = () => (
