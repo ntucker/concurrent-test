@@ -3,11 +3,20 @@ import { NetworkErrorBoundary } from 'rest-hooks';
 
 import Loading from './Loading';
 
-function NetworkBoundary({ children }: { children: React.ReactChild }) {
+function NetworkBoundary({
+  children,
+  fallback,
+}: {
+  children: React.ReactChild;
+  fallback: NonNullable<React.ReactNode>;
+}) {
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={fallback}>
       <NetworkErrorBoundary>{children}</NetworkErrorBoundary>
     </Suspense>
   );
 }
+NetworkBoundary.defaultProps = {
+  fallback: <Loading />,
+};
 export default memo(NetworkBoundary);

@@ -7,6 +7,7 @@ import React from 'react';
 
 import itemRender from 'navigation/breadcrumbItemRenderer';
 import { PostResource, UserResource } from 'resources';
+import NetworkBoundary from 'components/NetworkBoundary';
 
 import CommentList from './CommentList';
 
@@ -44,7 +45,9 @@ export default function PostDetail({ match }: Props) {
       ]}
     >
       <Typography.Paragraph>{post.body}</Typography.Paragraph>
-      <CommentList postId={id} />
+      <NetworkBoundary>
+        <CommentList postId={id} />
+      </NetworkBoundary>
     </PageHeader>
   );
 }
