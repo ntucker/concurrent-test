@@ -35,18 +35,20 @@ export const routes = [
       component: lazyPage('PostDetail'),
       resolveData: async (
         { dispatchFetch }: RouteProps,
-        { id }: { id: string },
+        match: { id: string },
       ) => {
-        const post = await dispatchFetch(
-          PostResource.detail(),
-          { id },
-          undefined,
-        );
-        await dispatchFetch(
-          UserResource.detail(),
-          post.userId ? { id: post.userId } : (null as any),
-          undefined,
-        );
+        if (match) {
+          const post = await dispatchFetch(
+            PostResource.detail(),
+            { id: match.id },
+            undefined,
+          );
+          await dispatchFetch(
+            UserResource.detail(),
+            post.userId ? { id: post.userId } : (null as any),
+            undefined,
+          );
+        }
       },
     },
   ],

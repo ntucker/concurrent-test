@@ -11224,10 +11224,10 @@ pnp-webpack-plugin@1.6.4:
   dependencies:
     ts-pnp "^1.1.6"
 
-pojo-router@^0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/pojo-router/-/pojo-router-0.1.3.tgz#dd67530b9c28ca334ba1420acfc070d84297d7b6"
-  integrity sha512-0+grcNYAo09BjRi49S6FPUrCjciac370pMB7ZCam4XsL7+9b8T0Tpd1hNWLI+NwYyzzY7xZ8WSvOO/8F4SKLLQ==
+pojo-router@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/pojo-router/-/pojo-router-0.2.0.tgz#ab873c26bb74d361b7fbb5b44387e57d73a94f4a"
+  integrity sha512-IFLLp8EB/mFOfkmvpNNS+DksMcVSZlBNTpGpLul0c45CBdutj5iXpOZu9Pa8Z/RrzKIk6tqXOqkNeMv9PE+Zwg==
   dependencies:
     "@babel/runtime" "^7.10.5"
     "@types/lodash" "^4.14.158"

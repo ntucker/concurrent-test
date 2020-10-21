@@ -1,8 +1,6 @@
 import React, { lazy, memo, Suspense } from 'react';
 import { memoize } from 'lodash';
 
-import NetworkBoundary from './NetworkBoundary';
-
 function lazyPage(
   pageName: string,
 ): React.ComponentType<any> & {
@@ -10,12 +8,7 @@ function lazyPage(
 } {
   const importStatement = () =>
     import(/* webpackChunkName: '[request]' */ `pages/${pageName}`);
-  const Page = lazy(importStatement);
-  let PageComponent: any = (props: any) => (
-    <NetworkBoundary>
-      <Page {...props} />
-    </NetworkBoundary>
-  );
+  let PageComponent: any = lazy(importStatement);
   PageComponent = memo(PageComponent);
   PageComponent.preload = importStatement;
   return PageComponent;

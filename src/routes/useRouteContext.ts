@@ -1,6 +1,7 @@
 import { useFetchDispatcher } from '@rest-hooks/core';
+import { useMemo } from 'react';
 
 export default function useRouteContext() {
   const dispatchFetch = useFetchDispatcher();
-  return { dispatchFetch };
+  return useMemo(() => ({ dispatchFetch }), [dispatchFetch]);
 }

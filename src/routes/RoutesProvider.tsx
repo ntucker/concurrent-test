@@ -4,10 +4,14 @@ import PojoRouter from 'pojo-router';
 
 import NotFound from 'components/NotFound';
 
+import TransitionProvider from './Transitioner';
 import { routes, namedPaths } from './routes';
+import useRouteContext from './useRouteContext';
 
 function RoutesProvider({ children }: { children: React.ReactChild }) {
   const currentPath = useBrowserPathname();
+  const routeContext = useRouteContext();
+
   return (
     <PojoRouter
       namedPaths={namedPaths}
@@ -15,7 +19,9 @@ function RoutesProvider({ children }: { children: React.ReactChild }) {
       currentPath={currentPath}
       notFound={{ component: NotFound }}
     >
-      {children}
+      <TransitionProvider routeContext={routeContext}>
+        {children}
+      </TransitionProvider>
     </PojoRouter>
   );
 }
