@@ -8,7 +8,7 @@ import TransitionProvider from './lib/TransitionProvider';
 import { routes, namedPaths } from './routes';
 import useRouteContext from './useRouteContext';
 
-function RoutesProvider({ children }: { children: React.ReactChild }) {
+function RoutesProvider({ children }: { children: React.ReactNode }) {
   const currentPath = useBrowserPathname();
   const routeContext = useRouteContext();
   const preloadMatch = useCallback(

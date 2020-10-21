@@ -6,7 +6,7 @@ import NetworkBoundary from 'components/NetworkBoundary';
 import RoutesProvider from 'routes/RoutesProvider';
 import ErrorBoundary from 'components/ErrorBoundary';
 
-function RootProvider({ children }: { children: React.ReactChild }) {
+function RootProvider({ children }: { children: React.ReactNode }) {
   return (
     <ErrorBoundary>
       <CacheProvider>

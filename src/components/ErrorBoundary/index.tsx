@@ -1,7 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 import classNames from 'classnames';
-import ErrorLoggerContext from 'lib/ErrorLoggerContext';
 import { Spin } from 'antd';
+
+import ErrorLoggerContext from 'lib/ErrorLoggerContext';
 
 import styles from './index.scss';
 import { ReactComponent as BigAlertIcon } from './big-alert.svg';
@@ -10,10 +11,11 @@ function handleRefresh() {
   window.location.reload(true);
 }
 
-const RedBox = lazy(() =>
-  import(
-    /* webpackChunkName: 'redbox' */ /* webpackPreload: true */ 'redbox-react'
-  ),
+const RedBox = lazy(
+  () =>
+    import(
+      /* webpackChunkName: 'redbox' */ /* webpackPreload: true */ 'redbox-react'
+    ),
 );
 
 interface NetworkError extends Error {
@@ -21,7 +23,7 @@ interface NetworkError extends Error {
 }
 
 interface Props {
-  children: React.ReactChild;
+  children: React.ReactNode;
 }
 interface State {
   error: Error | NetworkError | null;

@@ -14,7 +14,7 @@ export default function TransitionProvider({
   timeoutMs,
   preloadMatch,
 }: {
-  children: React.ReactChild;
+  children: React.ReactNode;
   timeoutMs: number;
   preloadMatch: (match: any) => any;
 }) {

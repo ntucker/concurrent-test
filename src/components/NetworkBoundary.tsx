@@ -7,7 +7,7 @@ function NetworkBoundary({
   children,
   fallback,
 }: {
-  children: React.ReactChild;
+  children: React.ReactNode;
   fallback: NonNullable<React.ReactNode>;
 }) {
   return (
