@@ -4,7 +4,7 @@ import PojoRouter from 'pojo-router';
 
 import NotFound from 'components/NotFound';
 
-import TransitionProvider from './lib/Transitioner';
+import TransitionProvider from './lib/TransitionProvider';
 import { routes, namedPaths } from './routes';
 import useRouteContext from './useRouteContext';
 
