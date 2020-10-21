@@ -12,11 +12,11 @@ export const PendingContext = createContext(false);
 export default function TransitionProvider({
   children,
   timeoutMs,
-  routeContext,
+  preloadMatch,
 }: {
   children: React.ReactChild;
   timeoutMs: number;
-  routeContext: any;
+  preloadMatch: (match: any) => any;
 }) {
   const [startTransition, isPending] = useTransition({ timeoutMs });
   const allMatches = useMatchFinder();
@@ -27,13 +27,12 @@ export default function TransitionProvider({
     // fetch as transition/render
     const match = allMatches(window.location.pathname)[0];
     if (match) {
-      if (match.component) match.component?.preload?.();
-      if (match.resolveData) match.resolveData(routeContext, match);
+      preloadMatch(match);
     }
 
     // transition begins
     startTransition(setCurrentBrowserPathname);
-  }, [allMatches, setCurrentBrowserPathname, routeContext]);
+  }, [allMatches, setCurrentBrowserPathname, preloadMatch]);
   return (
     <UpdateContext.Provider value={transitionPathname}>
       <PendingContext.Provider value={isPending}>

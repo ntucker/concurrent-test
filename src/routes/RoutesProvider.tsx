@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { useBrowserPathname } from '@pojo-router/react-browser-pathname';
 import PojoRouter from 'pojo-router';
 
@@ -11,6 +11,13 @@ import useRouteContext from './useRouteContext';
 function RoutesProvider({ children }: { children: React.ReactChild }) {
   const currentPath = useBrowserPathname();
   const routeContext = useRouteContext();
+  const preloadMatch = useCallback(
+    (match: any) => {
+      if (match.component) match.component?.preload?.();
+      if (match.resolveData) match.resolveData(routeContext, match);
+    },
+    [routeContext],
+  );
   return (
     <PojoRouter
       namedPaths={namedPaths}
@@ -18,7 +25,7 @@ function RoutesProvider({ children }: { children: React.ReactChild }) {
       currentPath={currentPath}
       notFound={{ component: NotFound }}
     >
-      <TransitionProvider routeContext={routeContext}>
+      <TransitionProvider preloadMatch={preloadMatch}>
         {children}
       </TransitionProvider>
     </PojoRouter>
