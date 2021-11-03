@@ -6,18 +6,32 @@ import NotFound from 'components/NotFound';
 
 import TransitionProvider from './lib/TransitionProvider';
 import { routes, namedPaths } from './routes';
-import useRouteContext from './useRouteContext';
+import usePageContext from './usePageContext';
 
-function RoutesProvider({ children }: { children: React.ReactNode }) {
-  const currentPath = useBrowserPathname();
-  const routeContext = useRouteContext();
+function RoutesProvider({
+  children,
+  initialPath,
+}: {
+  children: React.ReactNode;
+  initialPath: string;
+}) {
+  const pageContext = usePageContext();
   const preloadMatch = useCallback(
     (match: any) => {
       if (match.component) match.component?.preload?.();
-      if (match.resolveData) match.resolveData(routeContext, match);
+      if (match.resolveData) match.resolveData(pageContext, match);
     },
-    [routeContext],
+    [pageContext],
   );
+  return (
+    <TransitionProvider preloadMatch={preloadMatch} initialPath={initialPath}>
+      <PojoBrowserBridge>{children}</PojoBrowserBridge>
+    </TransitionProvider>
+  );
+}
+
+function PojoBrowserBridge({ children }: { children: React.ReactNode }) {
+  const currentPath = useBrowserPathname();
   return (
     <PojoRouter
       namedPaths={namedPaths}
@@ -25,9 +39,7 @@ function RoutesProvider({ children }: { children: React.ReactNode }) {
       currentPath={currentPath}
       notFound={{ component: NotFound }}
     >
-      <TransitionProvider preloadMatch={preloadMatch}>
-        {children}
-      </TransitionProvider>
+      {children}
     </PojoRouter>
   );
 }
