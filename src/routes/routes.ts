@@ -1,7 +1,7 @@
 import lazyPage from 'routes/lib/lazyPage';
 import { PostResource, UserResource } from 'resources';
 
-import useRouteContext from './useRouteContext';
+import useRouteContext from './usePageContext';
 
 type RouteProps = ReturnType<typeof useRouteContext>;
 

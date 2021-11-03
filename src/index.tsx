@@ -10,7 +10,15 @@ const content = (
     <App />
   </RootProvider>
 );
-
 ReactDOM.unstable_createRoot(document.body /*, { hydrate: true }*/).render(
   content,
 );
+/*
+const root = document.getElementById('root');
+if (root) {
+  ReactDOM.unstable_createRoot(root /*, { hydrate: true }*).render(content);
+} else {
+  throw new Error('Root element not found, cannot init app');
+  document.body.innerHTML = 'Failure to load application';
+}
+*/
